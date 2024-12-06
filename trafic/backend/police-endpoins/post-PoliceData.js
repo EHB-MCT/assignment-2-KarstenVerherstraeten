@@ -1,4 +1,4 @@
-module.exports = async (req, res) => {
+export default function postPoliceData(app, client) {
 app.post("/traffic-data/bulk", async (req, res) => {
     try {
     let apiData;
