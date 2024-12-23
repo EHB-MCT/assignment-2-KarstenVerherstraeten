@@ -3,6 +3,7 @@ import cors from "cors";
 import express from "express";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import postPoliceData from "./police-endpoins/post-PoliceData.js";
+import GetPoliceData from "./police-endpoins/get-PoliceData.js";
 
 
 
@@ -34,6 +35,7 @@ run().catch(console.dir);
 const app = express();
 
 postPoliceData(app, client);
+GetPoliceData(app, client);
 app.use((req, res, next) => {
 	console.log("Request Headers:", req.headers);
 	console.log("Raw Body:", req.body); // Check if body is parsed
