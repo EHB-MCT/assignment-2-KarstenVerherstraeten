@@ -1,3 +1,4 @@
+import axios from 'axios';
 export default function postPoliceData(app, client) {
 app.post("/traffic-data/bulk", async (req, res) => {
     try {
