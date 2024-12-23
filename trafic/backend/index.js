@@ -10,7 +10,7 @@ import GetPoliceData from "./police-endpoins/get-PoliceData.js";
 
 
 const uri =
-	"mongodb+srv://karstenverherstraeten2:qsedL4vghnLzjIt3@policedata.rjj3l.mongodb.net/?retryWrites=true&w=majority&appName=PoliceData";
+	"mongodb+srv://karstenverherstraeten2:GFte5EOhRGpvh0Ns@policedata.rjj3l.mongodb.net/?retryWrites=true&w=majority&appName=PoliceData";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
