@@ -1,7 +1,10 @@
+import React from 'react';
+import Navbar from '../components/Navbar.jsx';
 function Home() {
 	return (
 		<>
-			<h1>Home</h1>
+         <Navbar />
+			<h1>Trafic Data</h1>
 		</>
 	);
 }
