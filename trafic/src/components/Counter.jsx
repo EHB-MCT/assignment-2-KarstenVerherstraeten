@@ -1,23 +1,20 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React from "react";
+import { useData } from "./DataContext";
 
 function Counter() {
-    // script section
+    const data = useData();
 
-    //fetch data from the backend
-    useEffect(() => {
-        fetch("http://localhost:3000/traffic-data")
-            .then((response) => response.json())
-            .then((data) => console.log(data));
-        
-    }, []);
-
-    //html section
-  return (
-    <div>
-      <h1>Counter</h1>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Counter Component</h1>
+            {data.map((item, index) => (
+                <div key={index}>
+                    <h3>{item.category}</h3>
+                    <p>Value: {item.value}</p>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 export default Counter;
