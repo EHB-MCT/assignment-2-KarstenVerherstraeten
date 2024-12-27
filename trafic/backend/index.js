@@ -1,6 +1,6 @@
 import express from "express"; // Import the express library to create a server.
 import { MongoClient, ServerApiVersion } from "mongodb"; // Import the MongoClient and ServerApiVersion objects from the mongodb library.
-
+import cors from "cors";
 // Import the function from the file that contains the endpoint.
 import postPoliceData from "./police-endpoins/post-PoliceData.js";
 import GetPoliceData from "./police-endpoins/get-PoliceData.js";
@@ -29,6 +29,7 @@ async function run() {
 run().catch(console.dir);
 
 const app = express();
+app.use(cors());
 
 // Call the function with the app and client objects
 postPoliceData(app, client);
