@@ -98,12 +98,12 @@ function Counter() {
                 const accurateStart = calculateAccurateValue(group.category, group.totalValue);
 
                 return (
-                    <div key={index}>
+                    <div className="Category" key={index}>
                         <h2>Category: {group.category}</h2>
-                        <p>Start Year: {group.startYear}</p>
+                        {/* <p>Start Year: {group.startYear}</p>
                         <p>End Year: {group.endYear}</p>
                         <p>Median Value: {group.medianValue}</p>
-                        <p>Total Value: {group.totalValue}</p>
+                        <p>Total Value: {group.totalValue}</p> */}
                         <CountUp 
                             start={accurateStart}
                             end={group.totalValue}
