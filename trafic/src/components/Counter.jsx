@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CountUp from 'react-countup';
 import { useData } from "./DataContext";
+import style from "../modules/counter.module.css";
 
 function Counter() {
     const data = useData();
@@ -91,15 +92,14 @@ function Counter() {
     };
 
     return (
-        <div>
-            <h1>Grouped Data</h1>
+        <div className={style.counters}>
             {result.map((group, index) => {
                 const remainingTime = getRemainingTimeInSeconds();
                 const accurateStart = calculateAccurateValue(group.category, group.totalValue);
 
                 return (
-                    <div className="Category" key={index}>
-                        <h2>Category: {group.category}</h2>
+                    <div className={style.Category} key={index}>
+                        <h2>{group.category}</h2>
                         {/* <p>Start Year: {group.startYear}</p>
                         <p>End Year: {group.endYear}</p>
                         <p>Median Value: {group.medianValue}</p>

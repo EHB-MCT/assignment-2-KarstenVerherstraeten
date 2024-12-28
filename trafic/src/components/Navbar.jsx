@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
+import style from "../modules/navbar.module.css";
 
 function Navbar() {
   return (
    <>
-    <nav>
+    <nav className={style.navbar}>
+      <div>
+        <Link to="/">
+        <h1>Trafic Data</h1>
+        </Link>
+      </div>
       <ul>
         <li>
           <Link to="/">Home</Link>

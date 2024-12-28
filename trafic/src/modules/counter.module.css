@@ -1,0 +1,31 @@
+.counters{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.Category {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    margin-bottom: 50px; /* Space between categories */
+    width: 40%; /* Stretch to full width */
+}
+
+.Category h2 {
+    color: rgb(36,75,166); /* White text for better visibility */
+    font-size: 36px;
+    font-weight: 600; /* Slightly bolder for emphasis */
+    margin-bottom: 10px; /* Add spacing below the title */
+}
+
+.Category span {
+    color: #58baff; /* Vibrant blue for numbers */
+    font-size: 100px; /* Larger font for importance */
+    font-weight: 700; /* Bold for emphasis */
+    line-height: 1; /* Prevent extra spacing */
+    margin-left: 0; /* Numbers aligned with text */
+    text-align: left; /* Keep text left-aligned */
+}
+
