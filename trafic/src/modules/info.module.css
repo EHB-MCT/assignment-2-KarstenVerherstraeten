@@ -1,0 +1,39 @@
+.info {
+    margin: 0px 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info h1{
+    color: rgb(36,75,166); /* White text for better visibility */
+    font-size: 36px;
+    font-weight: 600; /* Slightly bolder for emphasis */
+    margin-bottom: 10px; /* Add spacing below the title */
+}
+.info h2{
+    color: rgb(36,75,166); /* White text for better visibility */
+    font-size: 36px;
+    font-weight: 600; /* Slightly bolder for emphasis */
+    margin-bottom: 10px; /* Add spacing below the title */
+}
+
+
+.info p {
+    color: rgb(36,75,166);
+    font-family: "Lexend", serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    width: 50%;
+
+}
+
+
+.info ul li {
+    list-style-type: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(36,75,166);
+    margin-left: 0px;
+
+}
