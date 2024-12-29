@@ -5,17 +5,17 @@ import style from "../modules/counter.module.css";
 
 function Counter() {
     const data = useData();
-    const [startValues, setStartValues] = useState({}); // To store last displayed values and timestamps
+    const [startValues, setStartValues] = useState({});
 
     const groupedData = data.reduce((acc, item) => {
         const baseCategory = item.category.split(" - ")[0];
 
         if (!acc[baseCategory]) {
-            acc[baseCategory] = { 
-                items: [], 
+            acc[baseCategory] = {
+                items: [],
                 startYear: Infinity,
                 endYear: -Infinity,
-                totalValue: 0, 
+                totalValue: 0,
             };
         }
 
@@ -27,7 +27,6 @@ function Counter() {
         return acc;
     }, {});
 
-    // Calculate median values for each group
     const calculateMedian = (values) => {
         if (!values.length) return 0;
         const sorted = [...values].sort((a, b) => a - b);
@@ -37,84 +36,95 @@ function Counter() {
             : sorted[middle];
     };
 
-    // Generate results from grouped data
+    const calculateAverageIncrease = (items) => {
+        const yearlyIncreases = [];
+        items.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+        for (let i = 1; i < items.length; i++) {
+            yearlyIncreases.push(items[i].value - items[i - 1].value);
+        }
+        return yearlyIncreases.length
+            ? yearlyIncreases.reduce((sum, increase) => sum + increase, 0) / yearlyIncreases.length
+            : 0;
+    };
+
     const result = Object.entries(groupedData).map(([category, group]) => {
         const values = group.items.map(item => item.value);
+        const averageIncrease = calculateAverageIncrease(group.items);
+        const lastYearValue = group.items.find(
+            item => parseInt(item.year) === group.endYear
+        )?.value || 0;
+
         return {
             category,
             startYear: group.startYear,
             endYear: group.endYear,
             medianValue: calculateMedian(values),
             totalValue: group.totalValue,
+            estimatedEndValue: lastYearValue + averageIncrease,
         };
     });
 
-    const getCurrentValue = (totalValue) => {
+    const getCurrentValue = (estimatedEndValue) => {
         const currentDate = new Date();
-        const startOfYear = new Date(currentDate.getFullYear(), 0, 1); 
-        const endOfYear = new Date(currentDate.getFullYear(), 11, 31); 
+        const startOfYear = new Date(currentDate.getFullYear(), 0, 1);
+        const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
 
         const elapsedTime = (currentDate - startOfYear) / (1000 * 60 * 60 * 24);
         const totalDaysInYear = (endOfYear - startOfYear) / (1000 * 60 * 60 * 24);
         const progress = Math.min(elapsedTime / totalDaysInYear, 1);
 
-        return totalValue * progress;
+        return estimatedEndValue * progress;
     };
 
     const getRemainingTimeInSeconds = () => {
         const currentDate = new Date();
-        const endOfYear = new Date(currentDate.getFullYear(), 11, 31); 
+        const endOfYear = new Date(currentDate.getFullYear(), 11, 31);
         return (endOfYear - currentDate) / 1000;
     };
 
     useEffect(() => {
         const initialStartValues = {};
         result.forEach(group => {
-            const currentValue = getCurrentValue(group.totalValue);
+            const currentValue = getCurrentValue(group.estimatedEndValue);
             initialStartValues[group.category] = {
                 value: currentValue,
-                timestamp: Date.now(), // Store current timestamp
+                timestamp: Date.now(),
             };
         });
         setStartValues(initialStartValues);
     }, [data]);
 
-    const calculateAccurateValue = (category, totalValue) => {
+    const calculateAccurateValue = (category, estimatedEndValue) => {
         const now = Date.now();
         const elapsedSeconds = (now - (startValues[category]?.timestamp || now)) / 1000;
 
         const currentValue = startValues[category]?.value || 0;
         const totalSecondsInYear = getRemainingTimeInSeconds() + elapsedSeconds;
 
-        // Progress for the elapsed time
         const progress = elapsedSeconds / totalSecondsInYear;
-        return currentValue + (totalValue * progress);
+        return currentValue + (estimatedEndValue * progress);
     };
 
     return (
         <div className={style.counters}>
             {result.map((group, index) => {
                 const remainingTime = getRemainingTimeInSeconds();
-                const accurateStart = calculateAccurateValue(group.category, group.totalValue);
+                const accurateStart = calculateAccurateValue(group.category, group.estimatedEndValue);
 
                 return (
                     <div className={style.Category} key={index}>
                         <h2>{group.category}</h2>
-                        {/* <p>Start Year: {group.startYear}</p>
-                        <p>End Year: {group.endYear}</p>
-                        <p>Median Value: {group.medianValue}</p>
-                        <p>Total Value: {group.totalValue}</p> */}
-                        <CountUp 
+                        <CountUp
                             start={accurateStart}
-                            end={group.totalValue}
+                            end={group.estimatedEndValue}
                             duration={remainingTime}
                             separator=","
                             onEnd={() => {
                                 setStartValues(prev => ({
                                     ...prev,
                                     [group.category]: {
-                                        value: group.totalValue,
-                                        timestamp: Date.now(), // Update with the current timestamp
+                                        value: group.estimatedEndValue,
+                                        timestamp: Date.now(),
                                     },
                                 }));
                             }}
