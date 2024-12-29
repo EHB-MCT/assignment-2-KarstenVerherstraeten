@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar.jsx";
-import { Link } from "react-router-dom";
+import UpdateButton from "../components/UpdateButton.jsx";
 import Counter from "../components/Counter.jsx";
 import { DataProvider } from "../components/DataContext.jsx";
 import style from "../modules/home.module.css";
@@ -22,11 +22,15 @@ function Home() {
 				the latest police statistics, the data is visualized in a way that helps
 				people see the patterns and frequency of these accidents over time.
 			</p>
-
+			<UpdateButton />
 			<DataProvider>
 				<Counter />
 			</DataProvider>
+
+
 			</div>
+
+		
 			
 		</>
 	);
