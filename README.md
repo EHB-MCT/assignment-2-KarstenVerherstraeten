@@ -11,10 +11,13 @@ In this project my main goal is to achieve a better fisual interpretation of how
 - [Sources](#Sources)
 - [Author](#Author)
 
-## how to run
+## Instalation
+
+### how to run frontend
 
 It is important to have Node.js
 [Download here Node.js](https://nodejs.org/en/download/prebuilt-installer)
+
 You will also need Npm
 [Download here Npm](https://www.npmjs.com/)
 1. Clone repository
@@ -34,9 +37,25 @@ npm install
 ```bash
 npm start
 ```
-The application will be running at http://localhost:3000.
+The application will be running at http://localhost:3000. or any other port you choose or it provides due to a already running server on that port.
 
-#
+### how to run backend
+2. Navigate to project directory
+```bash
+cd assignment-2-KarstenVerherstraeten
+cd trafic
+cd backend
+```
+3. Install dependencies
+```bash
+npm install
+```
+3. Start development server
+```bash
+node index.js
+```
+The application will be running at http://localhost:3000. or any other port you choose or it provides due to a already running server on that port.
+
 ## Project Structure
 
 ```bash
@@ -46,7 +65,7 @@ ProjectRoot/
 │   ├── police-endpoints/         # Endpoints for interacting with police data
 │   │   ├── get-PoliceData.js     # Handles GET requests for police data
 │   │   ├── post-PoliceData.js    # Handles POST requests for police data
-│   │   └── index.js              # Main entry point for the backend
+│   └── └── index.js              # Main entry point for the backend
 │
 ├── public/                       # Publicly accessible folder for static files
 │
@@ -102,6 +121,11 @@ ProjectRoot/
 - [Linking tabel of contents](https://www.reddit.com/r/github/comments/13vd809/in_a_readmemd_file_is_it_possible_to_have_a_table/)
 - [Courses Front-end](https://canvas.ehb.be/courses/33612)
 - [CountUp](https://www.npmjs.com/package/react-countup)
+- [github copilot](https://github.com/features/copilot)
+- [DEV5 | Explanation page](https://chatgpt.com/share/6772a743-141c-800f-ba9d-18c0c9583274)
+- [DEV5 | Estemated value of next year](https://chatgpt.com/share/6772a7f1-c7d8-800f-9f02-b604cd6ea122)
+- [DEV5 | branch usage](https://chatgpt.com/share/6772a78a-d620-800f-9f9c-b580842d20ac)
+- [DEV5 | Counter chat](https://chatgpt.com/share/6772a7c3-64b0-800f-ba45-af878e54121a)
 
 ## Author
 Karsten Verherstraeten
