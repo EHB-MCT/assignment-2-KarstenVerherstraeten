@@ -1,0 +1,17 @@
+.home {
+    margin: 0px 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.home p {
+    color: rgb(36,75,166);
+    font-family: "Lexend", serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    width: 50%;
+
+}
+
