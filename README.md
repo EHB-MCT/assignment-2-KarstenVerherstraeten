@@ -11,7 +11,8 @@ In this project my main goal is to achieve a better fisual interpretation of how
 - [Sources](#Sources)
 - [Author](#Author)
 
-##Instalation
+## Instalation
+
 ### how to run frontend
 
 It is important to have Node.js
