@@ -1,3 +1,4 @@
+// import all needed packages, components, and css modules
 import React from "react";
 import Navbar from "../components/Navbar.jsx";
 import UpdateButton from "../components/UpdateButton.jsx";
@@ -8,8 +9,9 @@ import style from "../modules/home.module.css";
 function Home() {
 	return (
 		<>
-			<Navbar />
-			<div className={style.home}>
+		
+			<Navbar />  {/* usage of a component that you imported */}
+			<div className={style.home}> {/* the propper way to name a class using css modules */}
 			<p className={style.left}>
 
 				Welcome to my project! I am a student who tried to make a better visualisation of frequency of the trafic violations in belgium.
